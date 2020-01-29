@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:imc_calculator/const/const.dart';
+import '../services/calculateIMC.service.dart';
 
 class Calculator extends StatefulWidget {
   Calculator({Key key, this.title}) : super(key: key);
@@ -12,9 +13,6 @@ class Calculator extends StatefulWidget {
 }
 
 class _CalculatorState extends State<Calculator> {
-  static calcIMC(gender, age, heigth, weigth) {
-    debugPrint('$gender, $age, $heigth, $weigth');
-  }
 
   TextEditingController ageController = new TextEditingController();
   TextEditingController heigthController = new TextEditingController();
@@ -37,7 +35,7 @@ class _CalculatorState extends State<Calculator> {
               width: 200,
             ),
             Card(
-              elevation: 15.0,
+              elevation: 10.0,
               child: Padding(
                 padding: EdgeInsets.all(20.0),
                 child: Column(
@@ -126,9 +124,10 @@ class _CalculatorState extends State<Calculator> {
                     ),
                   ),
                 ),
-                onTap: () {
-                  calcIMC(_selectedGender, ageController.text,
-                      heigthController.text, weigthController.text);
+                onTap: () async {
+                  CalculateIMCService.calcIMC(_selectedGender, ageController.text, heigthController.text, weigthController.text);
+                  String test = await CalculateIMCService.calcIMC(_selectedGender, ageController.text, heigthController.text, weigthController.text);
+                  debugPrint(test);
                 }),
             Divider(
               height: 20.0,

@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "/home/dev/Desktop/flutter/imc-calculator/build/google_sign_in/intermediates/res/merged/release/drawable-watch-v20/common_google_signin_btn_text_dark_normal.xml",
+        "source": "/home/dev/.gradle/caches/transforms-2/files-2.1/d9dd38b2b4e7492cf5b22bb27c32bade/jetified-play-services-auth-16.0.1/res/drawable-watch-v20/common_google_signin_btn_text_dark_normal.xml"
+    },
+    {
+        "merged": "/home/dev/Desktop/flutter/imc-calculator/build/google_sign_in/intermediates/res/merged/release/drawable-watch-v20/common_google_signin_btn_text_light_normal.xml",
+        "source": "/home/dev/.gradle/caches/transforms-2/files-2.1/d9dd38b2b4e7492cf5b22bb27c32bade/jetified-play-services-auth-16.0.1/res/drawable-watch-v20/common_google_signin_btn_text_light_normal.xml"
+    },
+    {
+        "merged": "/home/dev/Desktop/flutter/imc-calculator/build/google_sign_in/intermediates/res/merged/release/drawable-watch-v20/common_google_signin_btn_text_disabled.xml",
+        "source": "/home/dev/.gradle/caches/transforms-2/files-2.1/d9dd38b2b4e7492cf5b22bb27c32bade/jetified-play-services-auth-16.0.1/res/drawable-watch-v20/common_google_signin_btn_text_disabled.xml"
+    }
+]
