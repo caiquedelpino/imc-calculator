@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:imc_calculator/const/const.dart';
 import '../services/calculateIMC.service.dart';
+import 'package:imc_calculator/alert-dialog/alert.dart';
 
 class Calculator extends StatefulWidget {
   Calculator({Key key, this.title}) : super(key: key);
@@ -13,12 +14,11 @@ class Calculator extends StatefulWidget {
 }
 
 class _CalculatorState extends State<Calculator> {
-
   TextEditingController ageController = new TextEditingController();
   TextEditingController heigthController = new TextEditingController();
   TextEditingController weigthController = new TextEditingController();
-  List<String> _genders = ['Masculino', 'Feminino'];
-  String _selectedGender;
+  // List<String> _genders = ['Masculino', 'Feminino'];
+  // String _selectedGender;
 
   @override
   Widget build(BuildContext context) {
@@ -40,37 +40,37 @@ class _CalculatorState extends State<Calculator> {
                 padding: EdgeInsets.all(20.0),
                 child: Column(
                   children: <Widget>[
-                    DropdownButton(
-                      hint: Text('Escolha o seu sexo'),
-                      value: _selectedGender,
-                      onChanged: (newValue) {
-                        setState(() {
-                          _selectedGender = newValue;
-                        });
-                      },
-                      items: _genders.map((location) {
-                        return DropdownMenuItem(
-                          child: new Text(location),
-                          value: location,
-                        );
-                      }).toList(),
-                    ),
-                    SizedBox(
-                      height: 20.0,
-                    ),
-                    TextField(
-                      controller: ageController,
-                      decoration: InputDecoration(
-                        hintText: "Idade",
-                        hintStyle: TextStyle(
-                          color: Color(0xFFBDC2CB),
-                          fontSize: 18.0,
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      height: 20.0,
-                    ),
+                    // DropdownButton(
+                    //   hint: Text('Escolha o seu sexo'),
+                    //   value: _selectedGender,
+                    //   onChanged: (newValue) {
+                    //     setState(() {
+                    //       _selectedGender = newValue;
+                    //     });
+                    //   },
+                    //   items: _genders.map((location) {
+                    //     return DropdownMenuItem(
+                    //       child: new Text(location),
+                    //       value: location,
+                    //     );
+                    //   }).toList(),
+                    // ),
+                    // SizedBox(
+                    //   height: 20.0,
+                    // ),
+                    // TextField(
+                    //   controller: ageController,
+                    //   decoration: InputDecoration(
+                    //     hintText: "Idade",
+                    //     hintStyle: TextStyle(
+                    //       color: Color(0xFFBDC2CB),
+                    //       fontSize: 18.0,
+                    //     ),
+                    //   ),
+                    // ),
+                    // SizedBox(
+                    //   height: 20.0,
+                    // ),
                     TextField(
                       controller: heigthController,
                       keyboardType: TextInputType.numberWithOptions(
@@ -96,7 +96,6 @@ class _CalculatorState extends State<Calculator> {
                         ),
                       ),
                     ),
-
                   ],
                 ),
               ),
@@ -125,9 +124,12 @@ class _CalculatorState extends State<Calculator> {
                   ),
                 ),
                 onTap: () async {
-                  CalculateIMCService.calcIMC(_selectedGender, ageController.text, heigthController.text, weigthController.text);
-                  String test = await CalculateIMCService.calcIMC(_selectedGender, ageController.text, heigthController.text, weigthController.text);
-                  debugPrint(test);
+                  if (heigthController.text != '' &&
+                      weigthController.text != '') {
+                    print(await calcIMC(double.parse(heigthController.text), double.parse(weigthController.text), context));
+                  } else {
+                    alertModal(context, "Erro", "Os campos 'altura' e 'peso', são obrigatórios!");
+                  }
                 }),
             Divider(
               height: 20.0,

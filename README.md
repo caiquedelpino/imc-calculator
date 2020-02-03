@@ -6,3 +6,5 @@ flutter clean
 flutter pub cache repair
 flutter pub get
 flutter run
+
+flutter emulators --launch Pixel_3_XL_API_29

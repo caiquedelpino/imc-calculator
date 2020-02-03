@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-showAlertDialog1(BuildContext context)
+alertModal(BuildContext context, title, message)
 {
     // configura o button
   Widget okButton = FlatButton(
@@ -11,8 +11,8 @@ showAlertDialog1(BuildContext context)
   );
   // configura o  AlertDialog
   AlertDialog alerta = AlertDialog(
-    title: Text("Login"),
-    content: Text("Senha incorreta"),
+    title: Text(title),
+    content: Text(message),
     actions: [
       okButton,
     ],

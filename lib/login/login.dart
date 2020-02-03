@@ -105,7 +105,7 @@ class _LoginState extends State<Login> {
                   if (email == 'admin' && senha == '123') {
                     Navigator.of(context).pushNamed('/calculator');
                   } else {
-                    showAlertDialog1(context);
+                    alertModal(context, 'Login', 'Senha incorreta');
                   }
                 }),
             Divider(
